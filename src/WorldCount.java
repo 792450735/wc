@@ -4,9 +4,9 @@ import java.util.ArrayList;
 public class WorldCount {
 	public static int words=0;
 	public static int lines=1;
-	public static int chars=0,t1=0,t2=0,t3=0;
+	public static int chars=0,t1=0,t2=0,t3=0;//t1,t2,t3分别为代码行，空行，注释行
 	public static ArrayList<String> fname=new ArrayList<String>();
-	public static String outname;
+	public static String outname="result.txt";
 	public static String stopList;
 	
 	public static void init(){
@@ -18,7 +18,7 @@ public class WorldCount {
 		t3=0;
 	}
 	
-	public static void wc(String ff,int[] use) throws IOException{
+	public static void wc(String ff,int[] use) throws IOException{//计算字符数，字数，行数；包括停用词表功能
 		int c=0;
 		String fff=new String("src/"+ff);
 		InputStream f=new FileInputStream(ff);////
@@ -106,7 +106,7 @@ public class WorldCount {
 			}
 		}
 		
-		for(int i=0;i<use.length;i++){
+		for(int i=0;i<use.length;i++){//按顺序输出
 			if(use[i]==1){
 				switch(i){
 				case 0:System.out.println(ff+",字符数："+chars);break;
@@ -118,7 +118,7 @@ public class WorldCount {
 		}
 	}
 	
-	public static void oout(String f,String ff,int[] use) throws IOException{
+	public static void oout(String f,String ff,int[] use) throws IOException{//将结果输出到txt
 		File file = new File(f);
 		
 			//2：准备输出流
@@ -137,12 +137,12 @@ public class WorldCount {
 			out.close();
 	}
 	
-	public static void hard(String f) throws IOException{
+	public static void hard(String f) throws IOException{//计算更复杂的数据：代码行，空行，注释行
 		File ff=new File(f);
 		InputStreamReader fff=new InputStreamReader(new FileInputStream(f));
 		BufferedReader freader=new BufferedReader(fff);
 		String l=null;
-		int isflag=0;
+		int isflag=0;//isflag=10为代码行，=11为注释行，=0为空行
 			while((l=freader.readLine())!=null){
 				isflag=0;
 				for(int i=0;i<l.length();i++){
@@ -180,7 +180,7 @@ public class WorldCount {
 				flags[2]=1;
 			if(args[i].equals("-a"))
 				flags[4]=1;
-			if(!args[i].equals("-c")&&!args[i].equals("-w")&&!args[i].equals("-l")&&!args[i].equals("-o")&&!args[i].equals("-a")&&!args[i].equals("-e")){
+			if(!args[i].equals("-c")&&!args[i].equals("-w")&&!args[i].equals("-l")&&!args[i].equals("-o")&&!args[i].equals("-a")&&!args[i].equals("-e")&&!args[i].equals("-s")){
 				fname.add(args[i]);
 			}
 			if(args[i].equals("-o")){
