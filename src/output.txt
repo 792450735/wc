@@ -1,3 +1,4 @@
-null,字符数：12
-null,单词数：4
-null,行数：4
+text.txt,字符数：14
+text.txt,单词数：5
+text.txt,行数：6
+text.txt,代码行/空行/注释行：4/1/1
