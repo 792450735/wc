@@ -1,0 +1,51 @@
+1：测试-c功能
+	wc.exe -c test1.c
+   期望输出：
+	test1.c,字符数：21
+2：测试-l功能
+	wc.exe -l test1.c
+   期望输出：
+	test1.c,行数：7
+3：测试-w功能
+	wc.exe -w test1.c
+   期望输出：
+	test1.c,单词数：8
+4：测试-a功能
+	wc.exe -a test1.c
+   期望输出：
+	test1.c,代码行/空行/注释行：4/1/2
+5：测试是否能按要求顺序输出：
+	wc.exe -a -l -w -c test1.c
+   期望输出：
+	test1.c,字符数：21
+	test1.c,单词数：8
+	test1.c,行数：7
+	test1.c,代码行/空行/注释行：4/1/2
+6：测试-o功能：
+	wc.exe -c test1.c -o output.txt
+   期望输出：
+	成功创建output.txt，里面内容为
+	test1.c,字符数：21
+7：测试能否按要求顺序输出到指定文件：
+	wc.exe -a -l -w -c test1.c -o output.txt
+   期望输出：
+	output.txt中内容为：
+	test1.c,字符数：21
+	test1.c,单词数：8
+	test1.c,行数：7
+	test1.c,代码行/空行/注释行：4/1/2
+8：测试-e功能：
+	wc.exe -w test1.c -e stop.txt
+   期望输出：
+	test1.c,单词数：6
+9：测试单/多字符后接注释的判断：
+	wc.exe -a test2.c
+   期望输出：
+	test2.c,代码行/空行/注释行：3/1/0
+10：测试空文本的输出：
+	wc.exe -a -l -w -c test3.c
+    期望输出：
+	test3.c,字符数：0
+	test3.c,单词数：0
+	test3.c,行数：1
+	test3.c,代码行/空行/注释行：0/1/0
